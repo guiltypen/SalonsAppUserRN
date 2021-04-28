@@ -94,9 +94,11 @@ export const SearchBarStyled = styled.TextInput`
   width: 60%;
 `;
 export const SalonTitle = styled.Text`
-  color: black;
+  color: white;
   font-size: 11px;
   padding: 5px;
   font-weight: bold;
   font-size: 15px;
+  top: 10px;
+  left: 10px;
 `;

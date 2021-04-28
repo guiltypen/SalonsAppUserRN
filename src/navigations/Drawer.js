@@ -25,6 +25,7 @@ import CategoryDetails from "../components/salonPages/Category/CategoryDetails";
 import ServiceDetails from "../components/salonPages/Service/ServiceDetails";
 import Profile from "../components/AuthPages/Profile";
 import AuthHome from "../components/AuthPages/AuthHome";
+import AppointmentDetail from "../components/salonPages/AppointmentDetail";
 
 import MenuIcons from "../components/NavBar/NavBarIcons";
 
@@ -54,6 +55,7 @@ const Screens = ({ style }) => {
             component={CategoryDetails}
           />
           <SalonPages.Screen name="ServiceDetails" component={ServiceDetails} />
+          {/* <SalonPages.Screen name="Appointment" component={AppointmentDetail} /> */}
         </SalonPages.Navigator>
       </Animated.View>
     </>

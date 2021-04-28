@@ -27,9 +27,9 @@ const ServiceDetails = ({ navigation, route }) => {
     serviceStore.fetchServices();
   }, []);
 
-  if (serviceStore.loading && specialistStore.loading)
-    return <Text> Loading </Text>;
+  if (serviceStore.loading) return <Text> Loading </Text>;
 
+  if (specialistStore.loading) return <Text> Loading </Text>;
   const foundService = serviceStore.services.find(
     (service) => service.id === +thisService
   );

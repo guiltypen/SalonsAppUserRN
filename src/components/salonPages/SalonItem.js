@@ -16,8 +16,8 @@ const SalonItem = ({ salon, navigation }) => {
           <ItemsContainer>
             <ImageContainer></ImageContainer>
             <TextContainer>
-              <SalonTitle> - {salon.username}</SalonTitle>
-              <SalonTitle> - area: {salon.address}</SalonTitle>
+              <SalonTitle> {salon.username}</SalonTitle>
+              <SalonTitle> {salon.address}</SalonTitle>
             </TextContainer>
           </ItemsContainer>
         </ItemsWrapper>
@@ -36,7 +36,10 @@ const ItemsWrapper = styled.View`
 
 const ItemsContainer = styled.View`
   width: 90%;
-  background-color: white;
+  height: 120px;
+  background-color: #132239;
+
+  align-items: center;
   /* justify-content: space-around; */
   flex-direction: row;
   border-radius: 10px;
@@ -55,9 +58,7 @@ const ImageContainer = styled.View`
 
 const TextContainer = styled.View`
   height: 80px;
-  margin-top: auto;
-  margin-bottom: auto;
-  background-color: green;
+
   margin: 5px;
   width: 200px;
 `;
