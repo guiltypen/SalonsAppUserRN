@@ -55,7 +55,8 @@ export const AuthButtonP = styled.TouchableOpacity`
   align-self: center;
   align-items: center;
   padding: 20px;
-  background-color: ${(props) => props.theme.purple};
+  /* background-color: ${(props) => props.theme.purple}; */
+  background-color: #156596;
   margin-top: 30px;
   border-radius: 15px;
   width: 150px;

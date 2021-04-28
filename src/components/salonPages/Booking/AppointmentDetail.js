@@ -17,7 +17,7 @@ const AppointmentDetail = ({ navigation }) => {
   const ServiceName = "Hair Dyeing";
   return (
     <AppointmentContainer>
-      <BackgroundSq source={require("../../../../assets/PurpleRec.png")} />
+      <BackgroundSq source={require("../../../../assets/BlueRec.png")} />
       <ItemsContainer>
         <ImageContainer></ImageContainer>
         <TextContainer>
@@ -50,14 +50,16 @@ const ItemsContainer = styled.View`
   flex-direction: column;
   border-radius: 10px;
   padding: 30px;
-  border-color: #876aea;
+  /* border-color: #876aea; */
+  border-color: white;
   border-width: 3px;
 `;
 
 const ImageContainer = styled.View`
   width: 90px;
   height: 90px;
-  background-color: grey;
+  /* background-color: grey; */
+  background-color: white;
   margin: 5px;
   bottom: 20px;
   border-radius: 20px;
@@ -72,7 +74,8 @@ const TextContainer = styled.View`
 `;
 
 const BookingText = styled.Text`
-  color: #876aea;
+  /* color: #876aea; */
+  color: white;
   font-size: 15px;
   font-weight: bold;
   margin: 30px;
