@@ -16,7 +16,7 @@ const SplashScreen = ({ navigation }) => {
       <SplashBackground source={splashBackground}>
         <SplashInfoContainer>
           <SplashImage source={splashImage} />
-          <SplashText>Salons App</SplashText>
+          <SplashText>Him & Her</SplashText>
         </SplashInfoContainer>
       </SplashBackground>
     </>

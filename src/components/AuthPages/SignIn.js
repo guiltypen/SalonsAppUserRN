@@ -25,7 +25,7 @@ const SignIn = ({ navigation }) => {
 
   return (
     <AuthContainer>
-      <BackgroundSq source={require("../../../assets/PurpleRec.png")} />
+      <BackgroundSq source={require("../../../assets/BlueRec.png")} />
       <AuthImg source={require("../../../assets/logosolidwhite.png")} />
       <AuthTitle>Please enter your username and password</AuthTitle>
       <AuthTextInput

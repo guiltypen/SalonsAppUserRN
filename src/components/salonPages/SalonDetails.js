@@ -152,7 +152,8 @@ const IconStyle = styled.View`
   width: 100px;
   height: 100px;
   border-radius: 60px;
-  background-color: black;
+  background-color: #132239;
+  border: 2px solid white;
 `;
 
 const IconName = styled.Text`
