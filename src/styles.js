@@ -12,6 +12,14 @@ export const AuthContainer = styled.View`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
+export const ProfilePageContainer = styled.View`
+  width: 100%;
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  margin-top: -60px;
+`;
+
 export const AuthTitle = styled.Text`
   color: white;
   font-size: 11px;
@@ -103,8 +111,9 @@ export const GenderContainer = styled.View`
 
 export const GenderTitle = styled.Text`
   color: white;
-  font-size: 11px;
+  font-size: 15px;
   padding: 10px;
+  font-weight: bold;
 `;
 
 export const AuthText = styled.Text`
@@ -113,9 +122,8 @@ export const AuthText = styled.Text`
 `;
 export const ProfileText = styled.Text`
   color: white;
-  font-size: 11px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  left: 5px;
   font-weight: bold;
 `;
 
@@ -130,4 +138,26 @@ export const ProfileImg = styled.Image`
   height: 108px;
   width: 61px;
   margin: 20px;
+`;
+
+export const AppointmentContainer = styled.View`
+  flex: 1;
+  align-self: stretch;
+  align-items: center;
+  padding-right: 60px;
+  padding-left: 60px;
+  padding-top: 200px;
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+export const AppointmentText = styled.Text`
+  color: white;
+  font-size: 16px;
+  margin: 2px;
+`;
+
+export const AppointmentTime = styled.Text`
+  color: white;
+  font-size: 20px;
+  margin: 5px;
+  font-weight: bold;
 `;

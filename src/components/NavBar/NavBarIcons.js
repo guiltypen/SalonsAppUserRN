@@ -13,12 +13,12 @@ const MenuIcons = ({ navigation }) => {
         padding: 5,
       }}
     >
-      <Icon
+      {/* <Icon
         name="funnel-outline"
         size={25}
         color="white"
         onPress={() => navigation.openDrawer()}
-      />
+      /> */}
       <Icon
         name="menu"
         size={30}
