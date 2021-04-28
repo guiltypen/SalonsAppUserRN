@@ -9,6 +9,7 @@ import {
   AuthButtonB,
   GenderContainer,
   GenderImg,
+  GenderTitle,
   AuthText,
 } from "../../styles";
 import userStore from "../../stores/UserStore";
@@ -81,8 +82,8 @@ const SignUp = ({ navigation }) => {
         onChangeText={(password) => setUser({ ...user, password })}
       />
       <GenderContainer>
-        <AuthTitle>Choose Gender :</AuthTitle>
-        <AuthText>{user.gender}</AuthText>
+        <GenderTitle> Gender : {user.gender}</GenderTitle>
+        {/* <AuthText>{user.gender}</AuthText> */}
       </GenderContainer>
       <GenderContainer>
         <TouchableOpacity onPress={() => setUser({ ...user, gender: "male" })}>

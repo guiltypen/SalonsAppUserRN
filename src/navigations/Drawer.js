@@ -58,6 +58,7 @@ const Screens = ({ style }) => {
           <SalonPages.Screen
             name="AppointmentDetail"
             component={AppointmentDetail}
+            options={{ headerLeft: null }}
           />
         </SalonPages.Navigator>
       </Animated.View>

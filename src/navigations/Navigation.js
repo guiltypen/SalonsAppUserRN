@@ -29,7 +29,17 @@ const Navigation = () => {
           }}
         >
           <Stack.Screen name="SignIn" component={Signin} />
-          <Stack.Screen name="SignUp" component={Signup} />
+          <Stack.Screen
+            name="SignUp"
+            component={Signup}
+            options={{
+              headerShown: true,
+              headerBackTitleVisible: false,
+              headerTitle: false,
+              headerTransparent: true,
+              headerTintColor: "white",
+            }}
+          />
           <Stack.Screen name="AuthHome" component={AuthHome} />
           <Stack.Screen
             name="Gender"
