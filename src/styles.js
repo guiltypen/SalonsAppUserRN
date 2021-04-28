@@ -12,6 +12,14 @@ export const AuthContainer = styled.View`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
+export const ProfilePageContainer = styled.View`
+  width: 100%;
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  margin-top: -60px;
+`;
+
 export const AuthTitle = styled.Text`
   color: white;
   font-size: 11px;
@@ -47,7 +55,8 @@ export const AuthButtonP = styled.TouchableOpacity`
   align-self: center;
   align-items: center;
   padding: 20px;
-  background-color: ${(props) => props.theme.purple};
+  /* background-color: ${(props) => props.theme.purple}; */
+  background-color: #156596;
   margin-top: 30px;
   border-radius: 15px;
   width: 150px;
@@ -103,8 +112,9 @@ export const GenderContainer = styled.View`
 
 export const GenderTitle = styled.Text`
   color: white;
-  font-size: 11px;
+  font-size: 15px;
   padding: 10px;
+  font-weight: bold;
 `;
 
 export const AuthText = styled.Text`
@@ -113,9 +123,8 @@ export const AuthText = styled.Text`
 `;
 export const ProfileText = styled.Text`
   color: white;
-  font-size: 11px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  left: 5px;
   font-weight: bold;
 `;
 

@@ -25,7 +25,11 @@ import CategoryDetails from "../components/salonPages/Category/CategoryDetails";
 import ServiceDetails from "../components/salonPages/Service/ServiceDetails";
 import Profile from "../components/AuthPages/Profile";
 import AuthHome from "../components/AuthPages/AuthHome";
+<<<<<<< HEAD
 import AppointmentDetail from "../components/salonPages/AppointmentDetail";
+=======
+import AppointmentDetail from "../components/salonPages/Booking/AppointmentDetail";
+>>>>>>> 9c15ec828295318bffaca6251a048bd4526f7490
 
 import MenuIcons from "../components/NavBar/NavBarIcons";
 
@@ -55,7 +59,14 @@ const Screens = ({ style }) => {
             component={CategoryDetails}
           />
           <SalonPages.Screen name="ServiceDetails" component={ServiceDetails} />
+<<<<<<< HEAD
           {/* <SalonPages.Screen name="Appointment" component={AppointmentDetail} /> */}
+=======
+          <SalonPages.Screen
+            name="AppointmentDetail"
+            component={AppointmentDetail}
+          />
+>>>>>>> 9c15ec828295318bffaca6251a048bd4526f7490
         </SalonPages.Navigator>
       </Animated.View>
     </>
@@ -104,13 +115,19 @@ const DrawerContent = (props) => {
     <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
       <DrawerItem
         label="Salons"
+        labelStyle={{ color: "white" }}
         onPress={() => props.navigation.navigate("Salons")}
       />
       <DrawerItem
         label="Profile"
+        labelStyle={{ color: "white" }}
         onPress={() => props.navigation.navigate("ProfileScreens")}
       />
-      <DrawerItem label="logOut" onPress={handleSubmit} />
+      <DrawerItem
+        label="logOut"
+        labelStyle={{ color: "white" }}
+        onPress={handleSubmit}
+      />
     </DrawerContentScrollView>
   );
 };
@@ -130,8 +147,11 @@ const DrawerComponents = ({ navigation }) => {
 
   const screensStyles = { borderRadius, transform: [{ scale }] };
   return (
-    // <LinearGradient style={{ flex: 1 }} colors={["#156596"]}>
-    <View style={{ flex: 1, backgroundColor: "#156596" }}>
+    <LinearGradient
+      style={{ flex: 1 }}
+      colors={["#156596", "#132239", "#132239"]}
+    >
+      {/* <View style={{ flex: 1, backgroundColor: "#156596" }}> */}
       <Drawer.Navigator
         initialRouteName="splash"
         drawerType="slide"
@@ -156,8 +176,8 @@ const DrawerComponents = ({ navigation }) => {
           {(props) => <ProfileScreens {...props} style={screensStyles} />}
         </Drawer.Screen>
       </Drawer.Navigator>
-    </View>
-    // </LinearGradient>
+      {/* </View> */}
+    </LinearGradient>
   );
 };
 

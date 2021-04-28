@@ -14,6 +14,7 @@ import {
   //   FlatList,
   //   View,
   Text,
+  TouchableOpacity,
 } from "react-native";
 
 const ServiceDetails = ({ navigation, route }) => {
@@ -27,6 +28,10 @@ const ServiceDetails = ({ navigation, route }) => {
     serviceStore.fetchServices();
   }, []);
 
+<<<<<<< HEAD
+=======
+  if (specialistStore.loading) return <Text> Loading </Text>;
+>>>>>>> 9c15ec828295318bffaca6251a048bd4526f7490
   if (serviceStore.loading) return <Text> Loading </Text>;
 
   if (specialistStore.loading) return <Text> Loading </Text>;
@@ -47,7 +52,7 @@ const ServiceDetails = ({ navigation, route }) => {
   // console.log(specialistStore.specialists.filter((specialist) => specialist.id === +foundService.specialistId));
   //   console.log(thisService);
   //   console.log(foundSpecialists);
-  console.log(filteredSpecialist);
+  console.log(foundService);
   return (
     <ServiceDetailsWrapper>
       <BackgroundSq source={require("../../../../assets/BlueRec.png")} />
@@ -66,13 +71,18 @@ const ServiceDetails = ({ navigation, route }) => {
       >
         <ItemsWrapper>
           {filteredSpecialist.map((specialist) => (
-            <ItemsContainer key={specialist.id}>
-              <ImageContainer></ImageContainer>
-              <TextContainer>
-                <SalonTitle> {specialist.username}</SalonTitle>
-                <SalonTitle> {specialist.phone}</SalonTitle>
-              </TextContainer>
-            </ItemsContainer>
+            <TouchableOpacity
+              style={{ width: "100%", left: "5%" }}
+              onPress={() => navigation.navigate("AppointmentDetail")}
+            >
+              <ItemsContainer key={specialist.id}>
+                <ImageContainer></ImageContainer>
+                <TextContainer>
+                  <SalonTitle> Specialist: {specialist.username}</SalonTitle>
+                  <SalonTitle> Phone number: {specialist.phone}</SalonTitle>
+                </TextContainer>
+              </ItemsContainer>
+            </TouchableOpacity>
           ))}
         </ItemsWrapper>
       </ScrollView>
@@ -94,7 +104,7 @@ const DescriptionContainer = styled.View`
   height: 110px;
   /* background-color: rgba(255, 255, 255, 0.7); */
   margin-top: 40px;
-  border: 2px solid white;
+  /* border: 2px solid white; */
 `;
 
 const BoldText = styled.Text`
@@ -124,18 +134,20 @@ const ItemsWrapper = styled.View`
 
 const ItemsContainer = styled.View`
   width: 90%;
-  background-color: white;
+  background-color: #132239;
   /* justify-content: space-around; */
   flex-direction: row;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
+  border: 2px solid white;
 `;
 
 const ImageContainer = styled.View`
   width: 90px;
   height: 90px;
-  background-color: grey;
+  /* background-color: grey; */
+  background-color: white;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 10px;
@@ -146,14 +158,14 @@ const TextContainer = styled.View`
   height: 80px;
   margin-top: auto;
   margin-bottom: auto;
-  background-color: green;
+  /* background-color: green; */
   margin: 5px;
   width: 200px;
 `;
 
 const SalonTitle = styled.Text`
-  color: black;
-  font-size: 11px;
+  color: white;
+  font-size: 13px;
   padding: 5px;
   font-weight: bold;
   font-size: 15px;
