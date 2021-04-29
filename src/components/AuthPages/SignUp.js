@@ -60,10 +60,11 @@ const SignUp = ({ navigation }) => {
         onChangeText={(lastName) => setUser({ ...user, lastName })}
       />
       <AuthTextInput
+        keyboardType="numeric"
         placeholder="Phone Number"
         required
         placeholderTextColor="#A6AEC1"
-        autoCapitalize="none"
+        // autoCapitalize="none"
         onChangeText={(phone) => setUser({ ...user, phone })}
       />
       <AuthTextInput

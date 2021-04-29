@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Importing store
 import salonStore from "../../stores/SalonStore";
@@ -6,14 +6,10 @@ import salonStore from "../../stores/SalonStore";
 //Importing styled
 import styled from "styled-components/native";
 import { BackgroundSq } from "./styles";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import { Image, TouchableOpacity, ScrollView } from "react-native";
 
 const SalonDetails = ({ navigation, route }) => {
   const { thisSalon } = route.params;
-
-  //   useEffect(() => {
-  //     salonStore.fetchSalons()
-  //   }, [])
 
   const foundSalon = salonStore.salons.find(
     (salon) => salon.id === +thisSalon.id
@@ -24,10 +20,10 @@ const SalonDetails = ({ navigation, route }) => {
       <BackgroundSq source={require("../../../assets/BlueRec.png")} />
       <SalonDetailsContainer>
         <ImagesContainer>
-          {/* <Image
-            source={foundSalon.image}
-            style={{ width: "30%", height: "10%" }}
-          /> */}
+          <Image
+            source={{ uri: `${foundSalon.image}` }}
+            style={{ width: "100%", height: "100%", borderRadius: "10px" }}
+          />
         </ImagesContainer>
         <SalonInfoContainer>
           <BoldText> Salon Information</BoldText>
@@ -45,7 +41,7 @@ const SalonDetails = ({ navigation, route }) => {
                 showsHorizontalScrollIndicator={false}
               >
                 {foundSalon.categories.map((category) => (
-                  <IconNameContainer>
+                  <IconNameContainer key={category}>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate("CategoryDetails", {
@@ -57,7 +53,16 @@ const SalonDetails = ({ navigation, route }) => {
                         category={category}
                         key={category.id}
                         navigation={navigation}
-                      ></IconStyle>
+                      >
+                        <Image
+                          source={{ uri: `${category.image}` }}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "60px",
+                          }}
+                        />
+                      </IconStyle>
                       <IconName> {category.name} </IconName>
                     </TouchableOpacity>
                   </IconNameContainer>
@@ -97,6 +102,7 @@ const ImagesContainer = styled.View`
   height: 180px;
   background-color: white;
   flex-wrap: wrap;
+  border-radius: 10px;
 `;
 
 const SalonInfoContainer = styled.View`
@@ -148,12 +154,15 @@ const IconNameContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
 const IconStyle = styled.View`
   width: 100px;
   height: 100px;
   border-radius: 60px;
   background-color: #132239;
   border: 2px solid white;
+  /* justify-content: center; */
+  /* flex-wrap: wrap; */
 `;
 
 const IconName = styled.Text`

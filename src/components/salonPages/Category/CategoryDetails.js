@@ -3,7 +3,7 @@ import React from "react";
 //Importing styled
 import styled from "styled-components/native";
 import { BackgroundSq } from "../styles";
-import { TouchableOpacity, ScrollView, FlatList } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 import { FlatGrid } from "react-native-super-grid";
 

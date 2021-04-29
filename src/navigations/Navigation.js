@@ -22,38 +22,31 @@ const Navigation = () => {
         <Stack.Navigator
           initialRouteName={"splash"}
           screenOptions={{
-            headerShown: false,
-            // headerTransparent: true,
-            // headerBackTitleVisible: false,
-            // headerTintColor: "white",
+            headerShown: true,
+            headerBackTitleVisible: false,
+            headerTitle: false,
+            headerTransparent: true,
+            headerTintColor: "white",
           }}
         >
           <Stack.Screen name="SignIn" component={Signin} />
+          <Stack.Screen name="SignUp" component={Signup} />
+          <Stack.Screen name="Gender" component={Gender} />
           <Stack.Screen
-            name="SignUp"
-            component={Signup}
-            options={{
-              headerShown: true,
-              headerBackTitleVisible: false,
-              headerTitle: false,
-              headerTransparent: true,
-              headerTintColor: "white",
-            }}
+            name="AuthHome"
+            component={AuthHome}
+            options={{ headerShown: false }}
           />
-          <Stack.Screen name="AuthHome" component={AuthHome} />
           <Stack.Screen
-            name="Gender"
-            component={Gender}
-            options={{
-              headerShown: true,
-              headerBackTitleVisible: false,
-              headerTitle: false,
-              headerTransparent: true,
-              headerTintColor: "white",
-            }}
+            name="splash"
+            component={SplashScreen}
+            options={{ headerShown: false }}
           />
-          <Stack.Screen name="splash" component={SplashScreen} />
-          <Stack.Screen name="Drawer" component={DrawerComponents} />
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerComponents}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

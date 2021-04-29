@@ -13,6 +13,7 @@ import {
   ScrollView,
   //   FlatList,
   //   View,
+  Image,
   Text,
   TouchableOpacity,
 } from "react-native";
@@ -70,9 +71,15 @@ const ServiceDetails = ({ navigation, route }) => {
             <TouchableOpacity
               style={{ width: "100%", left: "5%" }}
               onPress={() => navigation.navigate("AppointmentDetail")}
+              key={specialist.id}
             >
-              <ItemsContainer key={specialist.id}>
-                <ImageContainer></ImageContainer>
+              <ItemsContainer>
+                <ImageContainer>
+                  <Image
+                    source={{ uri: `${specialist.image}` }}
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </ImageContainer>
                 <TextContainer>
                   <SalonTitle> Specialist: {specialist.username}</SalonTitle>
                   <SalonTitle> Phone number: {specialist.phone}</SalonTitle>

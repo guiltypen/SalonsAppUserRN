@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Image, Text } from "react-native";
 import React from "react";
 import { observer } from "mobx-react";
 import styled from "styled-components/native";
@@ -13,7 +13,12 @@ const SalonItem = ({ salon, navigation }) => {
       >
         <ItemsWrapper>
           <ItemsContainer>
-            <ImageContainer></ImageContainer>
+            <ImageContainer>
+              <Image
+                source={{ uri: `${salon.image}` }}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </ImageContainer>
             <TextContainer>
               <SalonTitle> Salon: {salon.username}</SalonTitle>
               <SalonTitle> Location: {salon.address}</SalonTitle>

@@ -73,10 +73,9 @@ class UserStore {
       await instance.put(`users/${updateUser.id}`, updateUser);
       const user = this.user.find((user) => user.id === updateUser.id);
       for (const key in user) user[key] = updateUser[key];
-      // alert("Your account info has been updated");
+      alert("Your account info has been updated");
     } catch (error) {
       console.log(error);
-      alert("Your account info has not been updated, try different input");
     }
   };
 }
