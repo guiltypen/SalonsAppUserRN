@@ -4,14 +4,15 @@ import salonStore from "../../stores/SalonStore";
 import SalonItem from "./SalonItem";
 import SearchBar from "./SearchBar";
 import { observer } from "mobx-react";
-import { AuthContainer, BackgroundSq, AuthBackgroundImg } from "./styles";
-import { View, Text, ScrollView, FlatList } from "react-native";
+import { AuthContainer, BackgroundSq } from "./styles";
+import { Text, FlatList } from "react-native";
+import Loading from "../Loading/Loading";
 
 const SalonList = ({ navigation }) => {
   const [query, setQuery] = useState("");
 
-  if (!userStore.user) return <Text> loading</Text>;
-  if (salonStore.loading) return <Text> loading</Text>;
+  if (!userStore.user) return <Loading />;
+  if (salonStore.loading) return <Loading />;
 
   const salonslist = salonStore.salons.filter(
     (salon) => salon.gender === userStore.user.gender
@@ -25,7 +26,6 @@ const SalonList = ({ navigation }) => {
       <SalonItem salon={salon} key={salon.id} navigation={navigation} />
     ));
 
-  console.log(filtredsalons);
   return (
     // <ScrollView style={{ flex: 1, width: "100%" }}>
     <AuthContainer>

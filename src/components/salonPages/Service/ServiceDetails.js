@@ -13,10 +13,12 @@ import {
   ScrollView,
   //   FlatList,
   //   View,
-  Image,
   Text,
   TouchableOpacity,
 } from "react-native";
+// Importing DateTime
+import DateTime from "../Booking/DateTime";
+import Loading from "../../Loading/Loading";
 
 const ServiceDetails = ({ navigation, route }) => {
   const { thisService } = route.params;
@@ -29,8 +31,8 @@ const ServiceDetails = ({ navigation, route }) => {
     serviceStore.fetchServices();
   }, []);
 
-  if (specialistStore.loading) return <Text> Loading </Text>;
-  if (serviceStore.loading) return <Text> Loading </Text>;
+  if (specialistStore.loading) return <Loading />;
+  if (serviceStore.loading) return <Loading />;
 
   const foundService = serviceStore.services.find(
     (service) => service.id === +thisService
@@ -46,15 +48,12 @@ const ServiceDetails = ({ navigation, route }) => {
       foundSpecialists.find((specialistId) => specialist.id === specialistId)
   );
 
-  // console.log(specialistStore.specialists.filter((specialist) => specialist.id === +foundService.specialistId));
-  //   console.log(thisService);
-  //   console.log(foundSpecialists);
-  console.log(foundService);
+  // const times1 = ["3:30 PM", "5:00 PM", "6:00 PM", "8:00 PM"];
+
   return (
     <ServiceDetailsWrapper>
       <BackgroundSq source={require("../../../../assets/BlueRec.png")} />
 
-      {/*  */}
       <DescriptionContainer>
         <BoldText> Description</BoldText>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -68,24 +67,21 @@ const ServiceDetails = ({ navigation, route }) => {
       >
         <ItemsWrapper>
           {filteredSpecialist.map((specialist) => (
-            <TouchableOpacity
-              style={{ width: "100%", left: "5%" }}
-              onPress={() => navigation.navigate("AppointmentDetail")}
-              key={specialist.id}
-            >
-              <ItemsContainer>
-                <ImageContainer>
-                  <Image
-                    source={{ uri: `${specialist.image}` }}
-                    style={{ width: "100%", height: "100%" }}
+            <ItemsContainer key={specialist.id}>
+              <ImageContainer>
+                <Image source={{ uri: `${specialist.image}` }} />
+              </ImageContainer>
+              <TextContainer>
+                <SalonTitle> {specialist.username}</SalonTitle>
+                <TimeButtonsWrapper>
+                  <DateTime
+                    thisSpecialist={specialist}
+                    service={foundService}
+                    navigation={navigation}
                   />
-                </ImageContainer>
-                <TextContainer>
-                  <SalonTitle> Specialist: {specialist.username}</SalonTitle>
-                  <SalonTitle> Phone number: {specialist.phone}</SalonTitle>
-                </TextContainer>
-              </ItemsContainer>
-            </TouchableOpacity>
+                </TimeButtonsWrapper>
+              </TextContainer>
+            </ItemsContainer>
           ))}
         </ItemsWrapper>
       </ScrollView>
@@ -143,7 +139,7 @@ const ItemsContainer = styled.View`
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
-  border: 2px solid white;
+  border: 1px solid white;
 `;
 
 const ImageContainer = styled.View`
@@ -155,6 +151,13 @@ const ImageContainer = styled.View`
   margin-bottom: auto;
   margin-left: 10px;
   border-radius: 20px;
+  border: 1px solid white;
+`;
+
+const Image = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
 `;
 
 const TextContainer = styled.View`
@@ -164,12 +167,59 @@ const TextContainer = styled.View`
   /* background-color: green; */
   margin: 5px;
   width: 200px;
+  left: 10px;
+  top: 8px;
+  /* align-items: center; */
 `;
 
 const SalonTitle = styled.Text`
   color: white;
-  font-size: 13px;
-  padding: 5px;
+  font-size: 20px;
+  /* padding: 5px; */
   font-weight: bold;
-  font-size: 15px;
+  text-transform: capitalize;
 `;
+
+const TimeButtonsWrapper = styled.View`
+  width: 120%;
+  height: 40px;
+  flex-direction: row;
+  /* background-color: grey; */
+  left: 5px;
+  margin-top: 3px;
+`;
+
+const TimeButtonContainer = styled.View`
+  width: 70px;
+  height: 25px;
+  margin: 3px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TimeButton = styled.Text`
+  font-size: 12px;
+`;
+
+{
+  /* <ScrollView
+horizontal={true}
+showsHorizontalScrollIndicator={false}
+>
+{times1.map((time) => (
+ <TouchableOpacity
+key={time.id}
+onPress={() =>
+navigation.navigate("PlacingAppointment", {
+found: [{ foundService }, { specialist }],
+})
+}
+>
+<TimeButtonContainer>
+  <TimeButton>{time}</TimeButton>
+</TimeButtonContainer>
+</TouchableOpacity>
+))}
+</ScrollView> */
+}

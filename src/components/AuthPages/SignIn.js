@@ -31,11 +31,13 @@ const SignIn = ({ navigation }) => {
       <AuthTextInput
         placeholder="Username"
         placeholderTextColor="#A6AEC1"
+        autoCapitalize="none"
         onChangeText={(username) => setUser({ ...user, username })}
       />
       <AuthTextInput
         placeholder="Password"
         placeholderTextColor="#A6AEC1"
+        autoCapitalize="none"
         secureTextEntry={true}
         onChangeText={(password) => setUser({ ...user, password })}
       />

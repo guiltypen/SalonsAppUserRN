@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  AuthImgSignUp,
   GenderTitle,
   AuthContainer,
   ProfilePageContainer,
@@ -11,12 +10,12 @@ import {
   AuthButtonUpdate,
   ProfileText,
   GenderContainer,
-  AuthText,
   GenderImg,
 } from "../../styles";
 import { TouchableOpacity, Text } from "react-native";
 import userStore from "../../stores/UserStore";
 import { observer } from "mobx-react";
+import Loading from "../Loading/Loading";
 
 import styled from "styled-components/native";
 
@@ -37,7 +36,7 @@ const Profile = ({ navigation }) => {
       : null
   );
 
-  if (!userStore.user) return <Text> loading</Text>;
+  if (!userStore.user) return <Loading />;
 
   //   console.log(user);
 

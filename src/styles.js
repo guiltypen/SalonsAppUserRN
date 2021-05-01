@@ -148,6 +148,7 @@ export const AppointmentContainer = styled.View`
   padding-right: 60px;
   padding-left: 60px;
   padding-top: 200px;
+  width: 100%;
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 export const AppointmentText = styled.Text`
