@@ -27,21 +27,16 @@ const SalonList = ({ navigation }) => {
     ));
 
   return (
-    // <ScrollView style={{ flex: 1, width: "100%" }}>
     <AuthContainer>
       <BackgroundSq source={require("../../../assets/BlueRec.png")} />
       {/* <SearchBar setQuery={setQuery} /> */}
-      {/* <AuthBackgroundImg source={require("../../../assets/BlueRec.png")}> */}
       <FlatList
         data={filtredsalons}
-        keyExtractor={(item) => item.id}
+        // keyExtractor={(item) => item.id}
         renderItem={({ item }) => item}
         style={{ width: "100%" }}
       />
-      {/* <View style={{ width: "100%" }}>{filtredsalons}</View> */}
-      {/* </AuthBackgroundImg> */}
     </AuthContainer>
-    // </ScrollView>
   );
 };
 
