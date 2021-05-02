@@ -1,6 +1,10 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, configure } from "mobx";
 // Importing instance
 import instance from "./instance";
+
+configure({
+  enforceActions: "never",
+});
 
 class SalonStore {
   salons = [];

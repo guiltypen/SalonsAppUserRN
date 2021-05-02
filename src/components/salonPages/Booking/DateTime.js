@@ -46,7 +46,7 @@ const DateTime = ({ thisSpecialist, service, navigation }) => {
     });
   };
 
-  console.log(appointment);
+  // console.log(appointment);
   return (
     <View>
       <IconsContainer>

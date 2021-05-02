@@ -50,7 +50,7 @@ const SalonDetails = ({ navigation, route }) => {
                 showsHorizontalScrollIndicator={false}
               >
                 {foundSalon.categories.map((category) => (
-                  <IconNameContainer key={category}>
+                  <IconNameContainer key={category.id}>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate("CategoryDetails", {

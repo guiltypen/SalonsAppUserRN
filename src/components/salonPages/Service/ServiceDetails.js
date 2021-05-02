@@ -64,7 +64,9 @@ const ServiceDetails = ({ navigation, route }) => {
       <BackgroundSq source={require("../../../../assets/BlueRec.png")} />
 
       <DescriptionContainer>
-        <BoldText> Description</BoldText>
+        <BoldTextContainer>
+          <BoldText>Description</BoldText>
+        </BoldTextContainer>
         <ScrollView showsVerticalScrollIndicator={false}>
           <ThinText>{foundService.description}</ThinText>
         </ScrollView>
@@ -115,22 +117,30 @@ const DescriptionContainer = styled.View`
   /* border: 2px solid white; */
 `;
 
+const BoldTextContainer = styled.View`
+  width: 140px;
+  height: 40px;
+  background-color: ${(props) => props.theme.backgroundColor};
+  justify-content: center;
+  border-radius: 10px;
+  align-items: center;
+`;
+
 const BoldText = styled.Text`
   font-weight: bold;
   letter-spacing: 1px;
   color: white;
   font-size: 20px;
-  margin-bottom: 8px;
 `;
 
 const ThinText = styled.Text`
   font-weight: bold;
   letter-spacing: 1px;
   color: white;
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 5px;
   padding: 5px;
-  margin-left: 8px;
+  margin-left: 4px;
 `;
 
 const ItemsWrapper = styled.View`
