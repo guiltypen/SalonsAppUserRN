@@ -83,6 +83,8 @@ const SalonTitle = styled.Text`
   font-weight: bold;
   text-transform: capitalize;
   font-size: 20px;
+  /* background-color: red; */
+  width: 200px;
 `;
 
 const LocationContainer = styled.View`

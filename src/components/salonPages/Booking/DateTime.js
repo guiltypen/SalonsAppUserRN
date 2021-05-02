@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { TouchableOpacity, View, Text } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+// import DatePicker from "react-native-date-picker";
 import moment from "moment";
-import AuthTextInput from "../styles";
+// import AuthTextInput from "../styles";
 import bookingStore from "../../../stores/BookingStore";
 import styled from "styled-components/native";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
@@ -12,8 +13,8 @@ const DateTime = ({ thisSpecialist, service, navigation }) => {
   const [picker2, setPicker2] = useState(false);
 
   const [appointment, setAppointment] = useState({
-    date: "",
-    time: "",
+    date: new Date(),
+    // time: "",
     service: service.name,
     salonId: thisSpecialist.salonId,
     specialistId: thisSpecialist.id,
@@ -24,6 +25,7 @@ const DateTime = ({ thisSpecialist, service, navigation }) => {
       ...appointment,
       time: moment(time).format(`HH:mm A`),
       date: moment(date).format(`MMMM, Do YYYY`),
+      // date: date,
     });
     setPicker(!picker);
     setPicker2(!picker);
@@ -44,7 +46,7 @@ const DateTime = ({ thisSpecialist, service, navigation }) => {
     });
   };
 
-  // console.log(appointment);
+  console.log(appointment);
   return (
     <View>
       <IconsContainer>
@@ -74,6 +76,7 @@ const DateTime = ({ thisSpecialist, service, navigation }) => {
           </IconsStyle>
         )}
       </IconsContainer>
+      {/* <DatePicker onDateChange={handelChange} mode={`date`} /> */}
       <DateTimePickerModal
         isVisible={picker}
         mode={`time`}

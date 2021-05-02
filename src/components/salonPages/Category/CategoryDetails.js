@@ -31,6 +31,7 @@ const CategoryDetails = ({ navigation, route }) => {
             >
               <ServiceInfoContainer>
                 <ServiceInfoText>{item.name}</ServiceInfoText>
+                <ServiceInfoText>Price: {item.price} K.D.</ServiceInfoText>
               </ServiceInfoContainer>
             </TouchableOpacity>
           )}
@@ -71,4 +72,6 @@ const ServiceInfoText = styled.Text`
   font-size: 20px;
   font-weight: bold;
   color: white;
+  padding: 5px;
+  text-align: center;
 `;
