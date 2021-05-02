@@ -17,6 +17,7 @@ import { LinearGradient } from "expo-linear-gradient";
 // Importing Stores
 import userStore from "../stores/UserStore";
 import { observer } from "mobx-react";
+import styled from "styled-components";
 
 // Importing components
 import SalonList from "../components/salonPages/SalonList";
@@ -29,12 +30,20 @@ import AuthHome from "../components/AuthPages/AuthHome";
 import AppointmentDetail from "../components/salonPages/AppointmentDetail";
 =======
 import AppointmentDetail from "../components/salonPages/Booking/AppointmentDetail";
+<<<<<<< HEAD
 >>>>>>> 9c15ec828295318bffaca6251a048bd4526f7490
+=======
+import PlacingAppointment from "../components/salonPages/Booking/PlacingAppointment";
+>>>>>>> 7e29bbb90b28c24519ba8de4bb555fca3d28b1ea
 
 import MenuIcons from "../components/NavBar/NavBarIcons";
+import {
+  MaterialCommunityIcons,
+  SimpleLineIcons,
+  Entypo,
+} from "@expo/vector-icons";
 
 const SalonPages = createStackNavigator();
-
 const Screens = ({ style }) => {
   return (
     <>
@@ -53,18 +62,37 @@ const Screens = ({ style }) => {
             component={SalonList}
             options={{ headerLeft: null }}
           />
-          <SalonPages.Screen name="SalonDetails" component={SalonDetails} />
+          <SalonPages.Screen
+            name="SalonDetails"
+            component={SalonDetails}
+            options={{ headerTitle: "Salon Details" }}
+          />
           <SalonPages.Screen
             name="CategoryDetails"
             component={CategoryDetails}
+            options={{ headerTitle: "Services" }}
           />
+          <SalonPages.Screen
+            name="ServiceDetails"
+            component={ServiceDetails}
+            options={{ headerTitle: "Service Details" }}
+          />
+          <SalonPages.Screen
+            name="PlacingAppointment"
+            component={PlacingAppointment}
+            options={{ headerTitle: "Appointment Booking With" }}
+          />
+<<<<<<< HEAD
           <SalonPages.Screen name="ServiceDetails" component={ServiceDetails} />
 <<<<<<< HEAD
           {/* <SalonPages.Screen name="Appointment" component={AppointmentDetail} /> */}
 =======
+=======
+>>>>>>> 7e29bbb90b28c24519ba8de4bb555fca3d28b1ea
           <SalonPages.Screen
             name="AppointmentDetail"
             component={AppointmentDetail}
+            options={{ headerLeft: null }}
           />
 >>>>>>> 9c15ec828295318bffaca6251a048bd4526f7490
         </SalonPages.Navigator>
@@ -112,21 +140,53 @@ const DrawerContent = (props) => {
     props.navigation.replace("AuthHome");
   };
   return (
-    <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
+    <DrawerContentScrollView
+      {...props}
+      contentContainerStyle={{ flex: 1, marginTop: "12%" }}
+    >
+      <DrawerImageContainer>
+        <Image source={require("../../assets/logosolidwhite.png")} />
+      </DrawerImageContainer>
       <DrawerItem
         label="Salons"
-        labelStyle={{ color: "white" }}
+        labelStyle={{
+          color: "white",
+          marginLeft: "-35%",
+          fontSize: "16px",
+          width: "150%",
+          fontWeight: "bold",
+          letterSpacing: "0.5px",
+        }}
         onPress={() => props.navigation.navigate("Salons")}
+        icon={() => <Entypo name="home" size={28} color="white" />}
       />
       <DrawerItem
         label="Profile"
-        labelStyle={{ color: "white" }}
+        labelStyle={{
+          color: "white",
+          marginLeft: "-35%",
+          fontSize: "16px",
+          width: "150%",
+          fontWeight: "bold",
+          letterSpacing: "0.5px",
+        }}
         onPress={() => props.navigation.navigate("ProfileScreens")}
+        icon={() => (
+          <MaterialCommunityIcons name="account" size={30} color="white" />
+        )}
       />
       <DrawerItem
-        label="logOut"
-        labelStyle={{ color: "white" }}
+        label="Sign out"
+        labelStyle={{
+          color: "white",
+          marginLeft: "-15%",
+          fontSize: "16px",
+          width: "150%",
+          fontWeight: "bold",
+          letterSpacing: "0.5px",
+        }}
         onPress={handleSubmit}
+        icon={() => <SimpleLineIcons name="logout" size={24} color="white" />}
       />
     </DrawerContentScrollView>
   );
@@ -153,7 +213,7 @@ const DrawerComponents = ({ navigation }) => {
     >
       {/* <View style={{ flex: 1, backgroundColor: "#156596" }}> */}
       <Drawer.Navigator
-        initialRouteName="splash"
+        initialRouteName="Salons"
         drawerType="slide"
         drawerStyle={{ width: "40%", backgroundColor: "transparent" }}
         overlayColor="transparent"
@@ -183,35 +243,18 @@ const DrawerComponents = ({ navigation }) => {
 
 export default observer(DrawerComponents);
 
-{
-  /* <SalonPages.Screen
-options={{ headerShown: false }}
-name="SignIn"
-component={Signin}
-/>
-<SalonPages.Screen
-options={{ headerShown: false }}
-name="SignUp"
-component={Signup}
-/>
-<SalonPages.Screen
-name="AuthHome"
-component={AuthHome}
-options={{ headerShown: false }}
-/>
-<SalonPages.Screen
-options={{ headerShown: false }}
-name="Gender"
-component={Gender}
-/>
-<SalonPages.Screen
-name="splash"
-component={SplashScreen}
-options={{ headerShown: false }}
-/>
-<SalonPages.Screen
-name="Salons"
-component={SalonList}
-options={{ headerLeft: null,  }}
-/> */
-}
+const DrawerImageContainer = styled.View`
+  width: 90px;
+  height: 90px;
+  border-radius: 18px;
+  left: 40px;
+  margin-bottom: 20px;
+  /* border: 2px solid white; */
+  justify-content: center;
+  align-items: center;
+`;
+const Image = styled.Image`
+  width: 50px;
+  height: 90px;
+  border-radius: 18px;
+`;

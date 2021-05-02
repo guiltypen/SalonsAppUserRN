@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Importing store
 import salonStore from "../../stores/SalonStore";
 
+// Importing Icons
+import { Entypo, MaterialIcons, Feather } from "@expo/vector-icons";
+
 //Importing styled
 import styled from "styled-components/native";
 import { BackgroundSq } from "./styles";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import { TouchableOpacity, ScrollView } from "react-native";
 
 const SalonDetails = ({ navigation, route }) => {
   const { thisSalon } = route.params;
-
-  //   useEffect(() => {
-  //     salonStore.fetchSalons()
-  //   }, [])
 
   const foundSalon = salonStore.salons.find(
     (salon) => salon.id === +thisSalon.id
@@ -24,15 +23,21 @@ const SalonDetails = ({ navigation, route }) => {
       <BackgroundSq source={require("../../../assets/BlueRec.png")} />
       <SalonDetailsContainer>
         <ImagesContainer>
-          {/* <Image
-            source={foundSalon.image}
-            style={{ width: "30%", height: "10%" }}
-          /> */}
+          <SalonImage source={{ uri: `${foundSalon.image}` }} />
         </ImagesContainer>
         <SalonInfoContainer>
-          <BoldText> Salon Information</BoldText>
-          <ThinText> Location: {foundSalon.address}</ThinText>
-          <ThinText> Working hours: </ThinText>
+          <TimeLocationContainer>
+            <Entypo name="location" size={24} color="white" />
+            <ThinText>{foundSalon.address}</ThinText>
+          </TimeLocationContainer>
+          <TimeLocationContainer>
+            <MaterialIcons name="access-time" size={28} color="white" />
+            <ThinText>10 - 8</ThinText>
+          </TimeLocationContainer>
+          <TimeLocationContainer>
+            <Feather name="phone-call" size={24} color="white" />
+            <ThinText> {foundSalon.phone}</ThinText>
+          </TimeLocationContainer>
         </SalonInfoContainer>
 
         {/*  */}
@@ -45,7 +50,7 @@ const SalonDetails = ({ navigation, route }) => {
                 showsHorizontalScrollIndicator={false}
               >
                 {foundSalon.categories.map((category) => (
-                  <IconNameContainer>
+                  <IconNameContainer key={category}>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate("CategoryDetails", {
@@ -57,7 +62,9 @@ const SalonDetails = ({ navigation, route }) => {
                         category={category}
                         key={category.id}
                         navigation={navigation}
-                      ></IconStyle>
+                      >
+                        <CategoryImage source={{ uri: `${category.image}` }} />
+                      </IconStyle>
                       <IconName> {category.name} </IconName>
                     </TouchableOpacity>
                   </IconNameContainer>
@@ -68,12 +75,6 @@ const SalonDetails = ({ navigation, route }) => {
             <ThinText> This salon has no categories yet! </ThinText>
           )}
         </CategoriesContainer>
-
-        {/*  */}
-        <ContactInfoContainer>
-          <BoldText> Contact</BoldText>
-          <ThinText> Phone: {foundSalon.phone}</ThinText>
-        </ContactInfoContainer>
       </SalonDetailsContainer>
     </SalonDetailsWrapper>
   );
@@ -93,17 +94,25 @@ const SalonDetailsContainer = styled.View`
   margin-top: 30px;
 `;
 
+const SalonImage = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+`;
+
 const ImagesContainer = styled.View`
   height: 180px;
   background-color: white;
   flex-wrap: wrap;
+  border-radius: 10px;
 `;
 
 const SalonInfoContainer = styled.View`
   height: 140px;
   /* background-color: grey; */
-  margin-top: 30px;
-  justify-content: center;
+  margin-top: 20px;
+  justify-content: space-between;
+  left: 5px;
 `;
 
 const BoldText = styled.Text`
@@ -118,10 +127,11 @@ const ThinText = styled.Text`
   font-weight: bold;
   letter-spacing: 1px;
   color: white;
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 5px;
   padding: 5px;
-  margin-left: 8px;
+  margin-left: 15px;
+  text-transform: capitalize;
 `;
 
 const CategoriesContainer = styled.View`
@@ -148,12 +158,21 @@ const IconNameContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+const CategoryImage = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+`;
+
 const IconStyle = styled.View`
   width: 100px;
   height: 100px;
   border-radius: 60px;
   background-color: #132239;
   border: 2px solid white;
+  /* justify-content: center; */
+  /* flex-wrap: wrap; */
 `;
 
 const IconName = styled.Text`
@@ -172,4 +191,8 @@ const ContactInfoContainer = styled.View`
   height: 160px;
   /* background-color: red; */
   margin-top: 30px;
+`;
+
+const TimeLocationContainer = styled.View`
+  flex-direction: row;
 `;
