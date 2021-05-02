@@ -3,6 +3,8 @@ import React from "react";
 import { observer } from "mobx-react";
 import styled from "styled-components/native";
 // import salonStore from "../../stores/SalonStore";
+// Importing Icons
+import { Entypo } from "@expo/vector-icons";
 const SalonItem = ({ salon, navigation }) => {
   return (
     <>
@@ -13,10 +15,15 @@ const SalonItem = ({ salon, navigation }) => {
       >
         <ItemsWrapper>
           <ItemsContainer>
-            <ImageContainer></ImageContainer>
+            <ImageContainer>
+              <Image source={{ uri: `${salon.image}` }} />
+            </ImageContainer>
             <TextContainer>
-              <SalonTitle> Salon: {salon.username}</SalonTitle>
-              <SalonTitle> Location: {salon.address}</SalonTitle>
+              <SalonTitle> {salon.username}</SalonTitle>
+              <LocationContainer>
+                <Entypo name="location" size={22} color="white" />
+                <SalonTitle>{salon.address}</SalonTitle>
+              </LocationContainer>
             </TextContainer>
           </ItemsContainer>
         </ItemsWrapper>
@@ -40,7 +47,7 @@ const ItemsContainer = styled.View`
   flex-direction: row;
   border-radius: 10px;
   padding: 10px;
-  border: 2px solid white;
+  border: 1px solid white;
 `;
 
 const ImageContainer = styled.View`
@@ -52,6 +59,13 @@ const ImageContainer = styled.View`
   margin-bottom: auto;
   margin-left: 10px;
   border-radius: 20px;
+  border: 1px solid white;
+`;
+
+const Image = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
 `;
 
 const TextContainer = styled.View`
@@ -65,8 +79,20 @@ const TextContainer = styled.View`
 
 const SalonTitle = styled.Text`
   color: white;
-  font-size: 13px;
   padding: 5px;
   font-weight: bold;
-  font-size: 15px;
+  text-transform: capitalize;
+  font-size: 20px;
+  /* background-color: red; */
+  width: 200px;
+`;
+
+const LocationContainer = styled.View`
+  flex-direction: row;
+  /* background-color: red; */
+  left: 10px;
+  top: 10px;
+  width: 100px;
+  justify-content: space-between;
+  align-items: center;
 `;

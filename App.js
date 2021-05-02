@@ -35,28 +35,9 @@ const theme = {
 const App = () => {
   return (
     <>
-      {/* <ScrollView
-        style={{
-          flex: 1,
-          width: "100%",
-        }}
-      > */}
       <ThemeProvider theme={theme.male}>
         <Navigation />
-        {/* <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        > */}
-
-        {/* <View>
-              <Text>Open up App.js to start working on your app!</Text>
-            </View> */}
-        {/* </View> */}
       </ThemeProvider>
-      {/* </ScrollView> */}
       <StatusBar style={theme.male.lightStatus} />
     </>
   );

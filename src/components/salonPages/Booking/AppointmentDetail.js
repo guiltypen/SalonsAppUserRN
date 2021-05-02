@@ -8,24 +8,37 @@ import {
   AppointmentText,
   AppointmentTime,
 } from "../../../styles";
+import salonStore from "../../../stores/SalonStore";
 
-const AppointmentDetail = ({ navigation }) => {
+const AppointmentDetail = ({ navigation, route }) => {
+  const { found } = route.params;
+
+  const thisSpecialist1 = found[0];
+  const thisService = found[1];
+
+  const foundSalon = salonStore.salons.find(
+    (salon) => salon.id === thisSpecialist1.thisSpecialist.salonId
+  );
+
   const Date = "12/5/2020";
   const Time = "4:00 PM";
-  const SalonName = "The Hair Cut";
-  const SpatialistName = "Ahmad Hashem";
-  const ServiceName = "Hair Dyeing";
+
   return (
     <AppointmentContainer>
       <BackgroundSq source={require("../../../../assets/BlueRec.png")} />
       <ItemsContainer>
-        <ImageContainer></ImageContainer>
+        <ImageContainer>
+          <Image source={{ uri: `${thisSpecialist1.thisSpecialist.image}` }} />
+        </ImageContainer>
         <TextContainer>
           <AppointmentTime>{Date}</AppointmentTime>
           <AppointmentTime>{Time}</AppointmentTime>
-          <AppointmentText>At {SalonName}</AppointmentText>
-          <AppointmentText>with {SpatialistName}</AppointmentText>
-          <AppointmentText>For {ServiceName}</AppointmentText>
+          <AppointmentText>At {foundSalon.username}</AppointmentText>
+          <AppointmentText>
+            with {thisSpecialist1.thisSpecialist.firstName}{" "}
+            {thisSpecialist1.thisSpecialist.lastName}
+          </AppointmentText>
+          <AppointmentText>For {thisService.service.name}</AppointmentText>
         </TextContainer>
       </ItemsContainer>
       <TouchableOpacity onPress={() => navigation.navigate("Salons")}>
@@ -79,4 +92,10 @@ const BookingText = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin: 30px;
+`;
+
+const Image = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
 `;

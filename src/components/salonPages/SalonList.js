@@ -4,13 +4,15 @@ import salonStore from "../../stores/SalonStore";
 import SalonItem from "./SalonItem";
 import SearchBar from "./SearchBar";
 import { observer } from "mobx-react";
-import { AuthContainer, BackgroundSq, AuthBackgroundImg } from "./styles";
-import { View, Text, ScrollView } from "react-native";
+import { AuthContainer, BackgroundSq } from "./styles";
+import { Text, FlatList } from "react-native";
+import Loading from "../Loading/Loading";
 
 const SalonList = ({ navigation }) => {
   const [query, setQuery] = useState("");
 
-  if (!userStore.user) return <Text> loading</Text>;
+  if (!userStore.user) return <Loading />;
+  if (salonStore.loading) return <Loading />;
 
   const salonslist = salonStore.salons.filter(
     (salon) => salon.gender === userStore.user.gender
@@ -23,13 +25,20 @@ const SalonList = ({ navigation }) => {
     .map((salon) => (
       <SalonItem salon={salon} key={salon.id} navigation={navigation} />
     ));
+
   return (
     // <ScrollView style={{ flex: 1, width: "100%" }}>
     <AuthContainer>
       <BackgroundSq source={require("../../../assets/BlueRec.png")} />
       {/* <SearchBar setQuery={setQuery} /> */}
       {/* <AuthBackgroundImg source={require("../../../assets/BlueRec.png")}> */}
-      <View style={{ width: "100%" }}>{filtredsalons}</View>
+      <FlatList
+        data={filtredsalons}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => item}
+        style={{ width: "100%" }}
+      />
+      {/* <View style={{ width: "100%" }}>{filtredsalons}</View> */}
       {/* </AuthBackgroundImg> */}
     </AuthContainer>
     // </ScrollView>
