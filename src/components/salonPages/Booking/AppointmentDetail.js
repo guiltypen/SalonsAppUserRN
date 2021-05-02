@@ -35,10 +35,12 @@ const AppointmentDetail = ({ navigation, route }) => {
           <AppointmentTime>{Time}</AppointmentTime>
           <AppointmentText>At {foundSalon.username}</AppointmentText>
           <AppointmentText>
-            with {thisSpecialist1.thisSpecialist.firstName}{" "}
-            {thisSpecialist1.thisSpecialist.lastName}
+            with {thisSpecialist1.thisSpecialist.firstName}
           </AppointmentText>
           <AppointmentText>For {thisService.service.name}</AppointmentText>
+          <AppointmentText>
+            Service fees: {thisService.service.price} K.D.
+          </AppointmentText>
         </TextContainer>
       </ItemsContainer>
       <TouchableOpacity onPress={() => navigation.navigate("Salons")}>

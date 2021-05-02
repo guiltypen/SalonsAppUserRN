@@ -136,11 +136,11 @@ const DrawerContent = (props) => {
         label="Salons"
         labelStyle={{
           color: "white",
-          marginLeft: "-35%",
-          fontSize: "16px",
-          width: "150%",
+          marginLeft: -15,
+          fontSize: 16,
+          width: 150,
           fontWeight: "bold",
-          letterSpacing: "0.5px",
+          letterSpacing: 0.5,
         }}
         onPress={() => props.navigation.navigate("Salons")}
         icon={() => <Entypo name="home" size={28} color="white" />}
@@ -149,11 +149,11 @@ const DrawerContent = (props) => {
         label="Profile"
         labelStyle={{
           color: "white",
-          marginLeft: "-35%",
-          fontSize: "16px",
-          width: "150%",
+          marginLeft: -15,
+          fontSize: 16,
+          width: 150,
           fontWeight: "bold",
-          letterSpacing: "0.5px",
+          letterSpacing: 0.5,
         }}
         onPress={() => props.navigation.navigate("ProfileScreens")}
         icon={() => (
@@ -164,11 +164,11 @@ const DrawerContent = (props) => {
         label="Sign out"
         labelStyle={{
           color: "white",
-          marginLeft: "-15%",
-          fontSize: "16px",
-          width: "150%",
+          marginLeft: -8,
+          fontSize: 16,
+          width: 150,
           fontWeight: "bold",
-          letterSpacing: "0.5px",
+          letterSpacing: 0.5,
         }}
         onPress={handleSubmit}
         icon={() => <SimpleLineIcons name="logout" size={24} color="white" />}
